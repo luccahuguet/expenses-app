@@ -2,10 +2,13 @@ import React from "react";
 import { Pressable, View, Text } from "react-native";
 import { GlobalStyles } from "../constants/styles";
 import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const ExpenseItem = ({ description, amount, date }) => {
+  const navigation = useNavigation();
+
   const expensePressedHandler = () => {
-    console.log("Expense pressed");
+    navigation.navigate("ManageExpense");
   };
 
   return (
