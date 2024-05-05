@@ -4,8 +4,15 @@ import { GlobalStyles } from "../constants/styles";
 import { StyleSheet } from "react-native";
 
 const ExpenseItem = ({ description, amount, date }) => {
+  const expensePressedHandler = () => {
+    console.log("Expense pressed");
+  };
+
   return (
-    <Pressable>
+    <Pressable
+      onPress={expensePressedHandler}
+      style={({ pressed }) => pressed && styles.pressed}
+    >
       <View style={styles.expenseItem}>
         <View>
           <Text style={[styles.textBase, styles.description]}>
@@ -24,6 +31,9 @@ const ExpenseItem = ({ description, amount, date }) => {
 export default ExpenseItem;
 
 const styles = StyleSheet.create({
+  pressed: {
+    opacity: 0.75,
+  },
   expenseItem: {
     padding: 10,
     marginVertical: 10,
@@ -52,6 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 4,
+    minWidth: 80,
   },
   amount: {
     color: GlobalStyles.colors.primary500,
